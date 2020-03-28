@@ -2,7 +2,7 @@
 对象服务
 
 
- ./tail-project -hostNameAndPort 148.70.231.222:6543 -dataPath ./data -build 6543
+ ./tail-project -hostNameAndPort 148.70.231.222:6543 -dataPath ./data -build :6543
  
  
  
