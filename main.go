@@ -20,7 +20,7 @@ func httpService(httpAddr *string) {
 //
 func main() {
 	buildAddr := flag.String("build", ":6543", "server http buildAddr")
-	dataPath := flag.String("dataPath", "./data", " project data path")
+	dataPath := flag.String("dataPath", "data", " project data path")
 	hostNameAndPort := flag.String("hostNameAndPort", "", "host name and port ")
 	flag.Parse()
 	api.DataPath = *dataPath

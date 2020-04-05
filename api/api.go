@@ -13,7 +13,7 @@ import (
 // data path
 var (
 	maxUploadSize   int64 = 3 * 1024 * 1024
-	DataPath              = "./data"
+	DataPath              = "data"
 	HostNameAndPort       = ""
 	api                   = new(ProjectServerApi)
 )
@@ -53,6 +53,9 @@ func (*ProjectServerApi) upload(request *restful.Request, response *restful.Resp
 	newPath := GetFilePath(suffix)
 
 	i := strings.LastIndex(newPath, "/")
+	if i ==-1{
+		i = strings.LastIndex(newPath, "\\")
+	}
 	dir := newPath[:i]
 	_, err = os.Lstat(dir)
 	if os.IsNotExist(err) {
@@ -73,8 +76,8 @@ func (*ProjectServerApi) upload(request *restful.Request, response *restful.Resp
 		renderError(response, "写入文件失败", http.StatusInternalServerError)
 		return
 	}
-	i = strings.Index(newPath, "/")
-	path := newPath[i:]
+	//去掉 data path描述
+	path :=strings.ReplaceAll(newPath,DataPath,"")
 	if HostNameAndPort != "" {
 		path = "http://" + HostNameAndPort +path
 	}
