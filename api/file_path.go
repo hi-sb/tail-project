@@ -13,5 +13,5 @@ func GetFilePath(suffix string) string {
 	year := strconv.Itoa(time.Now().Year())
 	month := time.Now().Format("01")
 	day := strconv.Itoa(time.Now().Day())
-	return filepath.Join(DataPath, year+month+day, id[0:1], id[2:3], id[4:5], id[6:7], id+"."+suffix)
+	return filepath.Join(year+month+day, id[0:1], id[2:3], id[4:5], id[6:7], id+"."+suffix)
 }
